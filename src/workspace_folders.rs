@@ -1,6 +1,7 @@
 use serde::{Deserialize, Serialize};
+use url::Url;
 
-use crate::{OneOf, Uri};
+use crate::OneOf;
 
 #[derive(Debug, Eq, PartialEq, Clone, Default, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
@@ -24,7 +25,7 @@ pub struct WorkspaceFoldersServerCapabilities {
 #[serde(rename_all = "camelCase")]
 pub struct WorkspaceFolder {
     /// The associated URI for this workspace folder.
-    pub uri: Uri,
+    pub uri: Url,
     /// The name of the workspace folder. Defaults to the uri's basename.
     pub name: String,
 }

@@ -1,6 +1,6 @@
 use crate::{
     LSPAny, Location, OneOf, PartialResultParams, SymbolInformation, SymbolKind,
-    SymbolKindCapability, SymbolTag, TagSupport, Uri, WorkDoneProgressParams,
+    SymbolKindCapability, SymbolTag, TagSupport, Url, WorkDoneProgressParams,
 };
 
 use serde::{Deserialize, Serialize};
@@ -94,7 +94,7 @@ pub struct WorkspaceSymbol {
 
 #[derive(Debug, Eq, PartialEq, Clone, Deserialize, Serialize)]
 pub struct WorkspaceLocation {
-    pub uri: Uri,
+    pub uri: Url,
 }
 
 #[derive(Debug, Eq, PartialEq, Clone, Serialize, Deserialize)]

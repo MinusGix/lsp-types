@@ -1,9 +1,10 @@
 use crate::{
-    PartialResultParams, Range, TextDocumentIdentifier, Uri, WorkDoneProgressOptions,
+    PartialResultParams, Range, TextDocumentIdentifier, WorkDoneProgressOptions,
     WorkDoneProgressParams,
 };
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
+use url::Url;
 
 #[derive(Debug, Eq, PartialEq, Clone, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
@@ -49,7 +50,7 @@ pub struct DocumentLink {
     pub range: Range,
     /// The uri this link points to.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub target: Option<Uri>,
+    pub target: Option<Url>,
 
     /// The tooltip text when you hover over this link.
     ///

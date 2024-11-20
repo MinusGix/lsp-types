@@ -4,7 +4,9 @@ use serde::{Deserialize, Serialize};
 
 use serde_json::Value;
 
-use crate::{Range, Uri};
+use url::Url;
+
+use crate::Range;
 
 #[derive(Eq, PartialEq, Clone, Copy, Deserialize, Serialize)]
 #[serde(transparent)]
@@ -141,7 +143,7 @@ pub struct ShowDocumentClientCapabilities {
 #[serde(rename_all = "camelCase")]
 pub struct ShowDocumentParams {
     /// The document uri to show.
-    pub uri: Uri,
+    pub uri: Url,
 
     /// Indicates to show the resource in an external program.
     /// To show for example `https://code.visualstudio.com/`

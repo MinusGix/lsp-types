@@ -1,7 +1,8 @@
 use serde::{Deserialize, Serialize};
+use url::Url;
 
 use crate::{
-    FullDocumentDiagnosticReport, PartialResultParams, UnchangedDocumentDiagnosticReport, Uri,
+    FullDocumentDiagnosticReport, PartialResultParams, UnchangedDocumentDiagnosticReport,
     WorkDoneProgressParams,
 };
 
@@ -28,7 +29,7 @@ pub struct DiagnosticWorkspaceClientCapabilities {
 #[derive(Debug, Eq, PartialEq, Clone, Deserialize, Serialize)]
 pub struct PreviousResultId {
     /// The URI for which the client knows a result ID.
-    pub uri: Uri,
+    pub uri: Url,
 
     /// The value of the previous result ID.
     pub value: String,
@@ -61,7 +62,7 @@ pub struct WorkspaceDiagnosticParams {
 #[serde(rename_all = "camelCase")]
 pub struct WorkspaceFullDocumentDiagnosticReport {
     /// The URI for which diagnostic information is reported.
-    pub uri: Uri,
+    pub uri: Url,
 
     /// The version number for which the diagnostics are reported.
     ///
@@ -79,7 +80,7 @@ pub struct WorkspaceFullDocumentDiagnosticReport {
 #[serde(rename_all = "camelCase")]
 pub struct WorkspaceUnchangedDocumentDiagnosticReport {
     /// The URI for which diagnostic information is reported.
-    pub uri: Uri,
+    pub uri: Url,
 
     /// The version number for which the diagnostics are reported.
     ///
