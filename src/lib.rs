@@ -1053,7 +1053,7 @@ pub struct DocumentFilter {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub language: Option<String>,
 
-    /// A Uri [scheme](#Uri.scheme), like `file` or `untitled`.
+    /// A Uri [scheme](#Url.scheme), like `file` or `untitled`.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub scheme: Option<String>,
 

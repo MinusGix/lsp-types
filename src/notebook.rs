@@ -1,7 +1,8 @@
 use serde::{Deserialize, Serialize};
 use serde_repr::{Deserialize_repr, Serialize_repr};
+use url::Url;
 
-use crate::{LSPObject, Uri};
+use crate::LSPObject;
 
 pub use notification_params::*;
 
@@ -12,7 +13,7 @@ pub use notification_params::*;
 #[serde(rename_all = "camelCase")]
 pub struct NotebookDocument {
     /// The notebook document's URI.
-    pub uri: Uri,
+    pub uri: Url,
     /// The type of the notebook.
     pub notebook_type: String,
     /// The version number of this document (it will increase after each
@@ -39,7 +40,7 @@ pub struct NotebookCell {
     /// The cell's kind
     pub kind: NotebookCellKind,
     /// The URI of the cell's text document content.
-    pub document: Uri,
+    pub document: Url,
     /// Additional metadata stored with the cell.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub metadata: Option<LSPObject>,
@@ -209,7 +210,7 @@ pub enum NotebookDocumentFilter {
     ByType {
         /// The type of the enclosing notebook.
         notebook_type: String,
-        /// A Uri [scheme](#Uri.scheme), like `file` or `untitled`.
+        /// A Uri [scheme](#Url.scheme), like `file` or `untitled`.
         #[serde(skip_serializing_if = "Option::is_none")]
         scheme: Option<String>,
         /// A glob pattern.
@@ -220,7 +221,7 @@ pub enum NotebookDocumentFilter {
         /// The type of the enclosing notebook.
         #[serde(skip_serializing_if = "Option::is_none")]
         notebook_type: Option<String>,
-        /// A Uri [scheme](#Uri.scheme), like `file` or `untitled`.
+        /// A Uri [scheme](#Url.scheme), like `file` or `untitled`.
         scheme: String,
         /// A glob pattern.
         #[serde(skip_serializing_if = "Option::is_none")]
@@ -230,7 +231,7 @@ pub enum NotebookDocumentFilter {
         /// The type of the enclosing notebook.
         #[serde(skip_serializing_if = "Option::is_none")]
         notebook_type: Option<String>,
-        /// A Uri [scheme](#Uri.scheme), like `file` or `untitled`.
+        /// A Uri [scheme](#Url.scheme), like `file` or `untitled`.
         #[serde(skip_serializing_if = "Option::is_none")]
         scheme: Option<String>,
         /// A glob pattern.
@@ -294,7 +295,7 @@ mod notification_params {
         /// The version number of this notebook document.
         pub version: i32,
         /// The notebook document's URI.
-        pub uri: Uri,
+        pub uri: Url,
     }
 
     /// A change event for a notebook document.
@@ -385,7 +386,7 @@ mod notification_params {
     #[serde(rename_all = "camelCase")]
     pub struct NotebookDocumentIdentifier {
         /// The notebook document's URI.
-        pub uri: Uri,
+        pub uri: Url,
     }
 
     /// The params sent in a close notebook document notification.
